@@ -4,7 +4,7 @@ Using HTML, CSS and JS an user of my app would be able to Add recipes, Search on
 This app should satisfy the following requirements:
 
 
-I. Add recipes that have names and ingredients
+I. Add recipes that have names and ingredients.
 Implement the card layout bootstrap component that contains the task information:
 * name
 * ingredients
