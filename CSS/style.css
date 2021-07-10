@@ -47,12 +47,11 @@ body {
 .btn-outline-success{
     border-radius: 20px;  
 }
-/*.button--add{
-    background-color: greenyellow;
-    border-radius: 16px;
+.delete-button{
+    border-radius: 25px;
     height: min-content !important;
     width: min-content;  
-}*/
+}
 
 .btnsearch{
     background-color: greenyellow; 

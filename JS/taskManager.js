@@ -4,39 +4,36 @@ const createTaskHtml = (name, ingredients, recipesteps, preptime, cooktime, serv
     let visibility;
 
       const html = `
-                <!-- task  start -->
-                  <div class="card text-dark bg-light mb-3 mt-4" cardid= "${id}"  style="ma x-width: 18rem;" >
-                    <div class="card-header" text-center id="cardHeader">
-                      <a data-bs-toggle="collapse" href="#collapseTask1" role="button" aria-expanded="false" aria-controls="collapseTask1" style="color:black; font-weight:bold">
-                      ${name} 
-                      </a>                    
-                    </div>
-  
-                    <!-- collapse task 1 start -->
-                    <div class="collapse text-left" id="collapseTask1">
-                      <div class="card-body ">
-                      <!-- task content start  -->
-                            <p class="card-text text-left">
-                                <span class= "collapseTask1Span"> Name: ${name} </span>
-                                <div class="mt-0 pt-0"></div><br>
-                                <span class= "collapseTask1Span"> Method: </span> ${ingredients} <br>
-                                <span class= "collapseTask1Span"> Method: </span>${recipesteps} <br>
-                                <span class= "collapseTask1Span"> PrepTime: </span>${preptime} <br>
-                                <span class= "collapseTask1Span"> CookTime: </span>${cooktime} <br>
-                                <span class= "collapseTask1Span"> Serves: </span>${serves} <br>
-                            </p>
-                        <div class="d-flex justify-content-around">
-                        
-                        <button type="button" class="btn btn-outline-success editButton" id="${id}" onclick='markDoneDiv(${id})'>Edit</button>
-                        <button type="button" class="btn btn-outline-danger delete-button id="delete-button">Delete</button>
-                        </div>
-                        <!-- task content end -->
-                      </div>
-                    </div>   
-                    <!-- collapse task  end -->
-                  </div>
-                   <!-- end task  -->
-                </div>`;  
+      <div class="card text-dark bg-light mb-3 mt-4" cardid= "${id}"  style="ma x-width: 18rem;" >
+      <div class="card-header" text-center id="cardHeader">
+        <a data-bs-toggle="collapse" href="#collapseTask1" role="button" aria-expanded="false" aria-controls="collapseTask1" style="color:black; font-weight:bold">
+        ${name} 
+        </a>                    
+      </div>
+
+      <!-- collapse Recipe 1 start -->
+      <div class="collapse text-left" id="collapseTask1">
+        <div class="card-body ">
+        <!-- Recipe - content start  -->
+              <p class="card-text text-left">
+                  <span class= "collapseTask1Span">Ingredients:${ingredients}  </span> <br>
+                  <span class= "collapseTask1Span"> Method: </span>${recipesteps} <br>
+                  <span class= "collapseTask1Span"> PrepTime: </span>${preptime} 
+                  <span class= "collapseTask1Span"> | CookTime: </span>${cooktime} 
+                  <span class= "collapseTask1Span"> | Serves: </span>${serves} 
+              </p>
+          <div class="d-flex justify-content-around">
+          
+          <button type="button" class="btn btn-outline-success editButton" id="${id}" onclick='markDoneDiv(${id})'>Edit</button>
+          <button type="button" class="btn btn-outline-danger delete-button id="delete-button">Delete</button>
+          </div>
+          <!-- Recipe content end -->
+        </div>
+      </div>   
+      <!-- collapse Recipe  end -->
+    </div>
+     <!-- end Recipe 1  -->
+  </div>`;  
     return html;          
   }  
   
@@ -119,18 +116,18 @@ const createTaskHtml = (name, ingredients, recipesteps, preptime, cooktime, serv
         localStorage.setItem("currentId", currentId);
       }
   
-      load(){
-        //cheching if there are any tasks in localStorage
-        if(localStorage.getItem("tasks")){
-          let tasksJson = localStorage.getItem("tasks");
-          this.tasks = JSON.parse(tasksJson);
-        }
+      // load(){
+      //   //cheching if there are any tasks in localStorage
+      //   if(localStorage.getItem("tasks")){
+      //     let tasksJson = localStorage.getItem("tasks");
+      //     this.tasks = JSON.parse(tasksJson);
+      //   }
   
-        if(localStorage.getItem("currentId")){
-          let currentId = localStorage.getItem("currentId");
-          this.currentId = JSON.parse(currentId);
-        }
-      }
+      //   if(localStorage.getItem("currentId")){
+      //     let currentId = localStorage.getItem("currentId");
+      //     this.currentId = JSON.parse(currentId);
+      //   }
+      // }
   
       deleteTask(taskId){
         let newTasks = [];

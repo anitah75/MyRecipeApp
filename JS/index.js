@@ -7,17 +7,17 @@ const taskManager = new TaskManager(0);
 taskManager.load();
 taskManager.render();
 
-// Select the New Task Form
+// Select the Recipe Form
 
 let taskForm = document.querySelector('#addRecipeForm')
-let txtTaskName  =  document.querySelector('#txtTaskName');
+let txtRecipeName  =  document.querySelector('#txtRecipeName');
 let txtTaskIngredients =  document.querySelector('#txtTaskIngredients');
 let txtTaskRecipeSteps =  document.querySelector('#txtTaskRecipeSteps');
 let txtTaskTimePrep = document.querySelector('#txtTaskTimePrep');
 let txtTaskTimeCook = document.querySelector('#txtTaskTimeCook');
 let txtTaskServes = document.querySelector('#txtTaskServes');
-let submitTask = document.querySelector("#addRecipeBtn");
-let taskList = document.querySelector("#taskList");
+let submitTask = document.querySelector("#addRecipeBtn");       //Add recipe button
+let taskList = document.querySelector("#taskList");           
 
 let nameOk = false;
 let ingredientsOk = false;
@@ -39,19 +39,19 @@ let errMessageServes =  document.querySelector('#errMessageRecipeSteps');
 // Name input validation function
 const nameValidFunc = ()=> {
     nameOk = false;
-    if(txtTaskName.value.length >= 5){
+    if(txtRecipeName.value.length >= 5){
         errMessageName.style.display = "block";
         errMessageName.innerHTML = "Looks good!";
         errMessageName.style.color = "green";
-        txtTaskName.style.borderColor = "green";
+        txtRecipeName.style.borderColor = "green";
     nameOk = true;
 } else {
     errMessageName.style.display = "block";
-    errMessageName.innerHTML = "Please provide a valid description ";
+    errMessageName.innerHTML = "Please provide a valid recipe name ";
     errMessageName.style.color = "red";
-    txtTaskName.style.borderColor = "red";
+    txtRecipeName.style.borderColor = "red";
 }};
-txtTaskName.addEventListener("input", nameValidFunc);  
+txtRecipeName.addEventListener("input", nameValidFunc);  
     
  //Ingredients input validation function
 const ingredientsValidFunc = ()=> {
@@ -100,21 +100,21 @@ const validFormFieldInput = (event) => {
     recipeStepsValidFunc();
 
        
-    // add task step
+    // add recipe step
     if(nameOk && ingredientsOk && recipeStepsOk && timePrepOk && timeCookOk && servesOk ){
-        taskManager.addTask(TaskName.value, ingredients.value, recipesteps.value, preptime.value, cooktime.value, serves.value);
+        taskManager.addTask(txtRecipeName.value, txtRecipeName.value, txtTaskRecipeSteps.value, txtTaskRecipeSteps.value, txtTaskTimeCook.value, serves.value);
         //console.log(taskManager.tasks);
 
         
 // reset inputs fields
 
         // reset name
-        txtTaskName.value = "";
+        txtRecipeName.value = "";
         errMessageName.style.display = "none";
-        txtTaskName.style.borderColor = "#ced4da";
+        txtRecipeName.style.borderColor = "#ced4da";
 
         // reset ingredients
-        txtTaskIngredients.value = "";
+        txtRecipeName.value = "";
         errMessageIngredients.style.display = "none";
         txtTaskIngredients.style.borderColor = "#ced4da";
 
@@ -124,16 +124,20 @@ const validFormFieldInput = (event) => {
         txtTaskRecipeSteps.style.borderColor = "#ced4da";
 
         // reset Preparation Time
-        txtTaskTimePrep.value = "";
+        txtTaskRecipeSteps.value = "";
         errMessageTimePrep.style.display = "none";
         txtTaskTimePrep.style.borderColor = "#ced4da";
 
         // reset Cooking Time
-        txtTaskTimeCook.value = "select a status";
+        txtTaskTimeCook.value = "";
         errMessageTimeCook.style.display = "none";
         txtTaskTimeCook.style.borderColor = "#ced4da";
 
         //console.log(taskManager.render());
+
+        txtTaskServes.value = "";
+        errMessageServes.style.display = "none";
+        txtTaskServes.style.borderColor = "#ced4da";
         
     } 
     taskManager.render();
@@ -142,7 +146,7 @@ const validFormFieldInput = (event) => {
     taskManager.save();
 };
 
-
+// submit button handler
 taskForm.addEventListener("submit", validFormFieldInput);
 
 //test to create a task HTML 
